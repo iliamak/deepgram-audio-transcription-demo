@@ -4,5 +4,14 @@
   ],
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "devCommand": "npm run dev"
+  "devCommand": "npm run dev",
+  "functions": {
+    "api/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "VITE_DEEPGRAM_API_KEY": "@vite_deepgram_api_key"
+  }
 }
