@@ -117,36 +117,16 @@ export const processAudioFile = async (file: File, language: Language = 'en'): P
   try {
     const deepgramLanguage = getDeepgramLanguage(language);
     
-    // Создаем URL для запроса к Deepgram Nova 3
-    const url = 'https://api.deepgram.com/v1/listen?model=nova-3';
+    // Используем наш прокси-API вместо прямого обращения к Deepgram
+    console.log("Sending file to Deepgram...");
     
-    // Создаем FormData для отправки файла
+    // Создаем FormData для отправки файла через наш прокси-API
     const formData = new FormData();
     formData.append('file', file);
     
-    // Создаем параметры запроса
-    const params = {
-      language: deepgramLanguage,
-      smart_format: true,
-      diarize: false, // Отключаем разделение по спикерам согласно ТЗ
-      punctuate: true,
-      utterances: false,
-      detect_language: false
-    };
-    
-    // Добавляем параметры в URL
-    const queryParams = new URLSearchParams();
-    for (const [key, value] of Object.entries(params)) {
-      queryParams.append(key, String(value));
-    }
-    
-    // Отправляем запрос к Deepgram
-    console.log("Sending file to Deepgram...");
-    const response = await fetch(`${url}&${queryParams.toString()}`, {
+    // Отправляем запрос к нашему прокси-API
+    const response = await fetch(`/api/transcribe?language=${deepgramLanguage}`, {
       method: 'POST',
-      headers: {
-        'Authorization': `Token ${DEEPGRAM_API_KEY}`
-      },
       body: file
     });
     
