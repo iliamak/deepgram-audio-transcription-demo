@@ -1,0 +1,15 @@
+{
+  "name": "Deepgram Transcription Demo",
+  "short_name": "Audio Transcription",
+  "description": "Демо-версия сервиса расшифровки аудио с использованием API Deepgram Nova 3",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#20a886",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
