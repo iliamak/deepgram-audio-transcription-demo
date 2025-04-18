@@ -2,7 +2,8 @@ import type { Language } from '@/types/language';
 import type { TranscriptionResult } from '@/types/transcription';
 
 // API-ключ Deepgram (захардкожен согласно ТЗ)
-const DEEPGRAM_API_KEY = 'YOUR_DEEPGRAM_API_KEY';
+// Для реального использования замените на ваш API ключ
+const DEEPGRAM_API_KEY = import.meta.env.VITE_DEEPGRAM_API_KEY || 'YOUR_DEEPGRAM_API_KEY';
 
 // Максимальный размер файла (1ГБ)
 export const MAX_FILE_SIZE = 1024 * 1024 * 1024; 
